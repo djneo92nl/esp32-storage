@@ -1,4 +1,4 @@
-# storage
+# esp32-storage
 
 The firmware to flash on a spare ESP32 before it goes in the drawer.
 When you pick the board up again, it's also a bench tool for finding out
@@ -33,7 +33,7 @@ you ask it to, so it's harmless on any board.
 Each OTA slot in `default.csv` is 1.31 MB. The RISC-V chips' Wi-Fi stacks
 are bigger, so those builds leave out the heaviest tools to fit
 (`[tools]` in `platformio.ini`). The C5 and C6 are close to the limit:
-anything added to garnet_web lands on them first.
+anything added to garnet_web lands on them first, and the C5 is full.
 
 The ESP32-H2 has no Wi-Fi, so it isn't included.
 
@@ -62,6 +62,19 @@ app). After that, add `GARNET_WEB_WIFI` back to `env:esp32p4`. The web UI's
 System → Firmware → *Update Wi-Fi Co-processor…* stays available (it only
 starts the SDIO link, never Wi-Fi), but it can't get past the slot-size
 limit.
+
+## Build
+
+Built on [garnet_web](../garnet_web) and [garnet_settings](../garnet_settings),
+which must be checked out next to this repo:
+
+```
+~/Code/garnet_settings
+~/Code/garnet_web
+~/Code/esp32-storage   <- this repo
+```
+
+Flash the env for your chip:
 
 ```
 pio run -e esp32c3 -t upload

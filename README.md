@@ -65,14 +65,12 @@ limit.
 
 ## Build
 
-Built on [garnet_web](../garnet_web) and [garnet_settings](../garnet_settings),
-which must be checked out next to this repo:
-
-```
-~/Code/garnet_settings
-~/Code/garnet_web
-~/Code/esp32-storage   <- this repo
-```
+Built on [garnet_web](https://github.com/djneo92nl/garnet_web), which
+PlatformIO fetches from GitHub along with
+[garnet_settings](https://github.com/djneo92nl/garnet_settings), so a plain
+clone of this repo builds. To work on the libraries at the same time,
+switch `lib_deps` in `platformio.ini` to the `symlink://` lines noted there,
+with both checked out next to this repo.
 
 Flash the env for your chip:
 

@@ -6,7 +6,9 @@ Files, Hardware (I2C/GPIO), Serial monitor, Log, Clock, and the serial
 console (`gw wifi …`, `gw password reset`). See README.md.
 
 It's a thin app on top of [garnet_web](../garnet_web) and
-[garnet_settings](../garnet_settings), which are symlinked from `../`. Almost
+[garnet_settings](../garnet_settings). `platformio.ini` fetches garnet_web
+from GitHub, and garnet_settings comes along as its dependency. For
+library work, switch `lib_deps` to the `symlink://` lines noted there. Almost
 all behaviour lives there; this repo is `src/main.cpp` (the Board group,
 Ethernet-from-variant, the serial status line) plus `platformio.ini`
 (the per-chip tool sets). Library changes belong in garnet_web, including
